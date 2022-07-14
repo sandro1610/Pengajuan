@@ -3,7 +3,7 @@ include '../includes/conn.php';
 session_start();
 if (empty($_SESSION['email']) && empty($_SESSION['password']) && empty($_SESSION['id_user'])) {
   header("Location:../index.php");
-} elseif ($_SESSION['level'] != 'Admin') {
+} elseif ($_SESSION['level'] != 'Pengaju') {
   header("Location:../index.php");
 }
 ?>
@@ -93,14 +93,14 @@ if (empty($_SESSION['email']) && empty($_SESSION['password']) && empty($_SESSION
           </li>
           <li class="nav-item">
             <a class="nav-link" href="?p=request">
-              <i class="ni ni-mobile-button text-success "></i>Add Request
+              <i class="ni ni-mobile-button text-success "></i>Tambah Pengajuan
             </a>
           </li>
         </ul>
         <ul class="navbar-nav mb-md-3">
           <li class="nav-item">
             <a class="nav-link " href="?p=history_request">
-              <i class="ni ni-hat-3 text-red"></i> History Request
+              <i class="ni ni-hat-3 text-red"></i> History Pengajuan
             </a>
           </li>
         </ul>

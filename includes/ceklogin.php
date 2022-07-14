@@ -12,17 +12,15 @@ if (isset($_POST["submit"]) ){
 					$_SESSION['nama'] = $result["nama"];
 					$_SESSION['email'] = $result["email"];
 	                $_SESSION['password'] = $result["password"];
-	                $_SESSION['level'] = strtolower($result['level']);
-                if ($result['level'] == 'admin') {
-                	echo "<script>window.location='../admin/index.php';</script>";
-                }elseif ($result['level'] == 'manager') {
-                	echo "<script>window.location='../manager/index.php';</script>";
-                }elseif ($result['level'] == 'staff') {
-                	echo "<script>window.location='../staff/index.php';</script>";
-                }elseif ($result['level'] == 'engineer') {
-                	echo "<script>window.location='../engineer/index.php';</script>"; 
-                }elseif ($result['level'] == 'petugas') {
-                	echo "<script>window.location='../petugas/index.php';</script>";         
+	                $_SESSION['level'] = $result['level'];
+                if ($result['level'] == 'Admin') {
+                	echo "<script>window.location='../Admin/index.php';</script>";
+                }elseif ($result['level'] == 'Kadin') {
+                	echo "<script>window.location='../Kadin/index.php';</script>";
+                }elseif ($result['level'] == 'Pengaju') {
+                	echo "<script>window.location='../Pengaju/index.php';</script>";
+                }elseif ($result['level'] == 'Kabag') {
+                	echo "<script>window.location='../Kabag/index.php';</script>";         
                 }else{
 	                echo "<script>alert('Login Failed');</scrixpt>";
 	                echo "<script>window.location='../index.php';</script>";	

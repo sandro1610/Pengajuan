@@ -3,7 +3,7 @@ include '../includes/conn.php';
 session_start();
 if (empty($_SESSION['email']) && empty($_SESSION['password']) && empty($_SESSION['id_user'])) {
   header("Location:../index.php");
-} elseif ($_SESSION['level'] != 'Admin') {
+} elseif ($_SESSION['level'] != 'Kabag') {
   header("Location:../index.php");
 }
 ?>
@@ -156,17 +156,9 @@ if (empty($_SESSION['email']) && empty($_SESSION['password']) && empty($_SESSION
   <script src="../assets/js/argon.min.js?v=1.1.0"></script>
   <script type="text/javascript">
     $(document).ready(function() {
-      $('#data-problem').DataTable();
-    });
-  </script>
-  <script type="text/javascript">
-    $(document).ready(function() {
-      $('#data-request').DataTable();
-    });
-  </script>
-  <script type="text/javascript">
-    $(document).ready(function() {
-      $('#data-transaksi').DataTable();
+      $('#data-request').DataTable( {
+            "order": []
+        } );
     });
   </script>
   <script language="JavaScript" type="text/javascript">
