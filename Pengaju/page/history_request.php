@@ -19,8 +19,10 @@
           </thead>
           <tbody>
           <?php
+            $id_user = $_SESSION['id_user'];
             $sql = "SELECT * FROM tb_request 
-                    INNER JOIN tb_user ON tb_request.id_user = tb_user.id_user";
+                    INNER JOIN tb_user ON tb_request.id_user = tb_user.id_user
+                    WHERE tb_request.id_user = $id_user";
             $query = mysqli_query($link,$sql);
             while($hasil=mysqli_fetch_array($query)):
           ?>
@@ -82,17 +84,17 @@
                                       <div class="col-sm-6">
                                         <input class="form-control" readonly type="text" value="<?php 
                                                                                                 if ($hasil['status'] < 1) {
-                                                                                                 echo "Draft";
-                                                                                                }elseif($hasil['status'] == 1){
-                                                                                                  echo "Approved";
-                                                                                                }elseif($hasil['status'] == 2){
-                                                                                                  echo "Proccessed";
-                                                                                                }elseif($hasil['status'] == 3){
-                                                                                                  echo "Finish";
-                                                                                                }else{
-                                                                                                  echo "Rejected";
-                                                                                                }
-                                                                                               ?>">
+                                                                                                  echo "Pengajuan Baru";
+                                                                                                  }elseif($hasil['status'] == 1){
+                                                                                                    echo "Di Kirim";
+                                                                                                  }elseif($hasil['status'] == 2){
+                                                                                                    echo "Di Proses";
+                                                                                                  }elseif($hasil['status'] == 3){
+                                                                                                    echo "Selesai";
+                                                                                                  }else{
+                                                                                                    echo "Ditolak";
+                                                                                                  }
+                                                                                                ?>">
                                       </div>
                                   </div>
                                   <div class="form-group row">
@@ -102,11 +104,7 @@
                                       </div>
                                   </div>    
                                   <div class="text-center">
-                                    <?php if ($hasil['status'] == 4) {?>
-                                      <a class="btn btn-success" href="javascript:finish_request('<?=$hasil['v_key'];?>')">Finish</a>
-                                    <?php } ?>
                                     <a class="btn btn-danger" href="javascript:hapusData_request('<?=$hasil['no_ticket'];?>')">Delete</a>
-                                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-form<?php echo $hasil['no_ticket']; ?>">Edit</button>
                                   </div>
                               </form>
                             </div>
@@ -116,19 +114,31 @@
                     </div>
                 </div>
               </td>
-              <td><?php 
+              <td class="<?php 
                 if ($hasil['status'] < 1) {
-                 echo "Draft";
+                  echo "bg-warning text-white font-weight-bold";
+                 }elseif($hasil['status'] == 1){
+                   echo "bg-secondary text-black font-weight-bold";
+                 }elseif($hasil['status'] == 2){
+                   echo "bg-primary text-white font-weight-bold";
+                 }elseif($hasil['status'] == 3){
+                   echo "bg-success text-white font-weight-bold";
+                 }else{
+                   echo "bg-danger text-white font-weight-bold";
+                 }
+               ?>"><?php 
+               if ($hasil['status'] < 1) {
+                 echo "Pengajuan Baru";
                 }elseif($hasil['status'] == 1){
-                  echo "Approved";
+                  echo "Di Kirim";
                 }elseif($hasil['status'] == 2){
-                  echo "Proccessed";
+                  echo "Di Proses";
                 }elseif($hasil['status'] == 3){
-                  echo "Finish";
+                  echo "Selesai";
                 }else{
-                  echo "Rejected";
+                  echo "Ditolak";
                 }
-               ?></td>
+              ?></td>
               <td><?=$hasil['no_ticket'];?></td>
               <td><?=$hasil['tgl_req'];?></td>
               <td><?=$hasil['nama'];?></td>

@@ -140,7 +140,12 @@ if (isset($_POST["Submit_User"])) {
             JUMLAH PENGAJUAN BULAN INI
           </div>
           <div class="card-body">
-            <h2 class="card-title text-center">100</h2>
+            <?php
+            $sql_jumlah = "SELECT COUNT(no_ticket) AS jumlah FROM `tb_request` WHERE month(tgl_req) = 07 AND year(tgl_req) = 2022";
+            $query_jumlah = mysqli_query($link, $sql_jumlah);
+            $jumlah = mysqli_fetch_array($query_jumlah);
+            ?>
+            <h2 class="card-title text-center"><?= $jumlah['jumlah']?></h2>
             <h2 class="card-title text-center">Pengajuan</h2>
           </div>
         </div>

@@ -83,7 +83,7 @@ if (empty($_SESSION['email']) && empty($_SESSION['password']) && empty($_SESSION
         <!-- Navigation -->
         <ul class="navbar-nav">
           <li class="nav-item  class=" active=" ">
-            <a class=" nav-link active " href="?p=dashboard"> <i class="ni ni-tv-2 text-primary"></i> Dashboard
+            <a class=" nav-link" href="?p=dashboard"> <i class="ni ni-tv-2 text-primary"></i> Dashboard
             </a>
           </li>
           <li class="nav-item">
@@ -91,16 +91,11 @@ if (empty($_SESSION['email']) && empty($_SESSION['password']) && empty($_SESSION
               <i class="ni ni-single-02 text-yellow"></i> User profile
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="?p=request">
-              <i class="ni ni-mobile-button text-success "></i>Add Request
-            </a>
-          </li>
         </ul>
         <ul class="navbar-nav mb-md-3">
           <li class="nav-item">
             <a class="nav-link " href="?p=history_request">
-              <i class="ni ni-hat-3 text-red"></i> History Request
+              <i class="ni ni-hat-3 text-red"></i> List Pengajuan
             </a>
           </li>
         </ul>
@@ -156,22 +151,10 @@ if (empty($_SESSION['email']) && empty($_SESSION['password']) && empty($_SESSION
   <script src="../assets/js/argon.min.js?v=1.1.0"></script>
   <script type="text/javascript">
     $(document).ready(function() {
-      $('#data-request').DataTable( {
-            "order": []
-        } );
+      $('#data-request').DataTable({
+          "order": [2, 'desc']
+      });
     });
-  </script>
-  <script language="JavaScript" type="text/javascript">
-    function hapusData_problem(no_ticket) {
-      if (confirm("Apakah anda yakin akan menghapus data ini?")) {
-        window.location.href = 'index.php?p=delete_problem&no_ticket=' + no_ticket;
-      }
-    }
-    function hapusData_user(id_user) {
-      if (confirm("Apakah anda yakin akan menghapus data ini?")) {
-        window.location.href = 'index.php?p=delete&id_user=' + id_user;
-      }
-    }
   </script>
   <script language="JavaScript" type="text/javascript">
     function hapusData_request(no_ticket) {
@@ -179,25 +162,8 @@ if (empty($_SESSION['email']) && empty($_SESSION['password']) && empty($_SESSION
         window.location.href = 'index.php?p=delete_request&no_ticket=' + no_ticket;
       }
     }
-
-    function send_request(v_key) {
-      if (confirm("Apakah anda yakin akan MENGIRIM data ini?")) {
-        window.location.href = 'index.php?p=approve_request&v_key=' + v_key;
-      }
-    }
-
-    function approve_request(v_key) {
-      if (confirm("Apakah anda yakin akan MENYETUJUI data ini?")) {
-        window.location.href = 'index.php?p=approve_request&v_key=' + v_key;
-      }
-    }
-
-    function proccess_request(v_key) {
-      if (confirm("Apakah anda yakin akan MEMPROSES data ini?")) {
-        window.location.href = 'index.php?p=approve_request&v_key=' + v_key;
-      }
-    }
-
+  </script>
+  <script language="JavaScript" type="text/javascript">
     function finish_request(v_key) {
       if (confirm("Apakah anda yakin akan MENYELESAIKAN data ini?")) {
         window.location.href = 'index.php?p=approve_request&v_key=' + v_key;

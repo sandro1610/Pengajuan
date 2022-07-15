@@ -2,7 +2,6 @@
   <!-- Card header -->
     <div class="card-header"><h3 class="mb-0">Data Request</h3></div>
     <div class="container">
-      <a class="btn btn-md btn-success" href="report_request.php" target="_blank">Print</a>
       <div class="table-responsive py-4">
         <table class="table table-flush" id="data-request">
           <thead class="thead-light">
@@ -23,7 +22,7 @@
           if ($_SESSION['level'] == 'Kabag') {
             $sql = "SELECT * FROM tb_request 
                     INNER JOIN tb_user ON tb_request.id_user = tb_user.id_user
-                    WHERE status > 1";
+                    WHERE status = 2";
           }
               $query = mysqli_query($link,$sql);
               while($hasil=mysqli_fetch_array($query)):
@@ -31,12 +30,6 @@
             <tr>
               <td>
                 <a href="#" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal<?php echo $hasil['no_ticket']; ?>">Detail</a>
-                <a href="#" type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#modal-form<?php echo $hasil['no_ticket']; ?>">
-                  <i class='fas fa-pencil-alt' style="color: gray;"></i>
-                  </a>
-                  <a class="btn btn-sm btn-default" href="javascript:hapusData_request('<?=$hasil['no_ticket'];?>')">
-                       <i class='fas fa-trash' style="color: red;"></i>
-                  </a>
                 <!-- Modal -->
                 <div class="modal fade" id="myModal<?php echo $hasil['no_ticket']; ?>" role="dialog">
                    <div class="modal-dialog modal- modal-dialog-centered modal-lg" role="document">
@@ -82,6 +75,12 @@
                                       </div>
                                   </div>
                                   <div class="form-group row">
+                                      <label for="lname" class="col-sm-3 text-left control-label col-form-label">No Hanphone</label>
+                                      <div class="col-sm-6">
+                                        <input class="form-control" readonly type="text" value="<?= $hasil['no_hp'] ?>">
+                                      </div>
+                                  </div>
+                                  <div class="form-group row">
                                       <label for="lname" class="col-sm-3 text-left control-label col-form-label">Status</label>
                                       <div class="col-sm-6">
                                         <input class="form-control" readonly type="text" value="<?php 
@@ -106,11 +105,10 @@
                                       </div>
                                   </div>    
                                   <div class="text-center">
-                                    <?php if ($hasil['status'] == 1) {?>
-                                      <a class="btn btn-success" href="javascript:approve_request('<?=$hasil['v_key'];?>')">Approve</a>
+                                    <?php if ($hasil['status'] == 2) {?>
+                                      <a class="btn btn-success" href="javascript:finish_request('<?=$hasil['v_key'];?>')">Selesai</a>
+                                      <a class="btn btn-danger" href="javascript:reject_request('<?=$hasil['v_key'];?>')">Tolak</a>
                                     <?php } ?>
-                                    <a class="btn btn-danger" href="javascript:hapusData_request('<?=$hasil['no_ticket'];?>')">Delete</a>
-                                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-form<?php echo $hasil['no_ticket']; ?>">Edit</button>
                                   </div>
                               </form>
                             </div>
@@ -126,7 +124,7 @@
                 }elseif($hasil['status'] == 1){
                   echo "Send";
                 }elseif($hasil['status'] == 2){
-                  echo "Approved";
+                  echo "Proccessed";
                 }elseif($hasil['status'] == 3){
                   echo "Finish";
                 }else{

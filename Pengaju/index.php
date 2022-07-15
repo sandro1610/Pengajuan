@@ -100,7 +100,7 @@ if (empty($_SESSION['email']) && empty($_SESSION['password']) && empty($_SESSION
         <ul class="navbar-nav mb-md-3">
           <li class="nav-item">
             <a class="nav-link " href="?p=history_request">
-              <i class="ni ni-hat-3 text-red"></i> History Pengajuan
+              <i class="ni ni-hat-3 text-red"></i> List Pengajuan
             </a>
           </li>
         </ul>
@@ -156,30 +156,10 @@ if (empty($_SESSION['email']) && empty($_SESSION['password']) && empty($_SESSION
   <script src="../assets/js/argon.min.js?v=1.1.0"></script>
   <script type="text/javascript">
     $(document).ready(function() {
-      $('#data-problem').DataTable();
+      $('#data-request').DataTable({
+          "order": [2, 'desc']
+      } );
     });
-  </script>
-  <script type="text/javascript">
-    $(document).ready(function() {
-      $('#data-request').DataTable();
-    });
-  </script>
-  <script type="text/javascript">
-    $(document).ready(function() {
-      $('#data-transaksi').DataTable();
-    });
-  </script>
-  <script language="JavaScript" type="text/javascript">
-    function hapusData_problem(no_ticket) {
-      if (confirm("Apakah anda yakin akan menghapus data ini?")) {
-        window.location.href = 'index.php?p=delete_problem&no_ticket=' + no_ticket;
-      }
-    }
-    function hapusData_user(id_user) {
-      if (confirm("Apakah anda yakin akan menghapus data ini?")) {
-        window.location.href = 'index.php?p=delete&id_user=' + id_user;
-      }
-    }
   </script>
   <script language="JavaScript" type="text/javascript">
     function hapusData_request(no_ticket) {
@@ -187,34 +167,11 @@ if (empty($_SESSION['email']) && empty($_SESSION['password']) && empty($_SESSION
         window.location.href = 'index.php?p=delete_request&no_ticket=' + no_ticket;
       }
     }
-
-    function send_request(v_key) {
-      if (confirm("Apakah anda yakin akan MENGIRIM data ini?")) {
-        window.location.href = 'index.php?p=approve_request&v_key=' + v_key;
-      }
-    }
-
-    function approve_request(v_key) {
-      if (confirm("Apakah anda yakin akan MENYETUJUI data ini?")) {
-        window.location.href = 'index.php?p=approve_request&v_key=' + v_key;
-      }
-    }
-
-    function proccess_request(v_key) {
-      if (confirm("Apakah anda yakin akan MEMPROSES data ini?")) {
-        window.location.href = 'index.php?p=approve_request&v_key=' + v_key;
-      }
-    }
-
-    function finish_request(v_key) {
-      if (confirm("Apakah anda yakin akan MENYELESAIKAN data ini?")) {
-        window.location.href = 'index.php?p=approve_request&v_key=' + v_key;
-      }
-    }
-
-    function reject_request(v_key) {
-      if (confirm("Apakah anda yakin akan MENOLAK data ini?")) {
-        window.location.href = 'index.php?p=reject_request&v_key=' + v_key;
+  </script>
+  <script language="JavaScript" type="text/javascript">
+    function hapusData_request(no_ticket) {
+      if (confirm("Apakah anda yakin akan menghapus data ini?")) {
+        window.location.href = 'index.php?p=delete_request&no_ticket=' + no_ticket;
       }
     }
   </script>

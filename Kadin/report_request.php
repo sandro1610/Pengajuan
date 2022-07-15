@@ -3,69 +3,64 @@
      session_start();
  if (empty($_SESSION['email']) && empty($_SESSION['password']) && empty($_SESSION['id_user'])){
     header("Location:../index.php");
-  }elseif ($_SESSION['level'] != 'Admin') {
+  }elseif ($_SESSION['level'] != 'Kadin') {
     header("Location:../index.php");
   }
+
+$tahun = date('Y');
+
+
+
 $html='<!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>INSERDES</title>
+  <title>Dinas Pemuda dan Olahraga Sumatera Selatan</title>
   <meta charset="utf-8">
-  <link rel="icon" href="../assets/img/icons/favicon.ico" type="image/png">
 </head>
 <body>
 	<table align="center" style="border: solid;" border="2">
 		  <tr>
-		    <th rowspan="2"><h2><img height="90px" src="../assets/img/icons/logo.png">PT INDONESIA ASAHAN ALUMINIUM (Persero)</h2></th>
-		    <td style="border-color: black;">No. Dokumen/Revisi</td>
-		  </tr>
-		  <tr style="border-color: black;">
-		    <td>SIT-FR &nbsp; &nbsp;  - &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/ &nbsp;</td>
+		    <th rowspan="2"><h2>Dinas Pemuda dan Olahraga Provinsi Sumatera Selatan</h2></th>
+		    <td></td>
 		  </tr>
 	</table>
-	<h2 align="center">Laporan Request Inalum Service Desk System</h2>
+	<h2 align="center">Laporan Pengajuan Sponsorship Tahun 2022</h2>
 	<table border="1" cellpadding="10" cellspacing="0">
           <thead>
               <tr style="border: solid;" border="3">
-                  <th>No Ticket</th>
+                  <th width="60px">No Ticket</th>
                   <th>Tanggal</th>
                   <th>Nama</th>
-                  <th>Description</th>
-                  <th>Attachment</th>
+                  <th width="412px">Description</th>
                   <th>E-mail</th>
+                  <th>No Handphone</th>
                   <th>Status</th>
               </tr>
           </thead>
           <tbody>';
-              if ($_SESSION['email'] == 'mkhlsndr@gmail.com') {
-                $sql = "SELECT * FROM tb_request 
-                        INNER JOIN tb_user ON tb_request.id_user = tb_user.id_user
-                        WHERE status >= 2";
-              }else{
-                  $sql = "SELECT * FROM tb_request 
-                          INNER JOIN tb_user ON tb_request.id_user = tb_user.id_user
-                          WHERE status >= 1";
-              }
+              $sql = "SELECT * FROM tb_request 
+                      INNER JOIN tb_user ON tb_request.id_user = tb_user.id_user
+                      WHERE year(tgl_req) = $tahun and status >= 1";
               $query = mysqli_query($link,$sql);
               while($hasil=mysqli_fetch_array($query)){
               	$status = "";
               		if ($hasil['status'] < 1) {
-                   $status = "New Request";
+                   $status = "Pengajuan Baru";
                   }elseif($hasil['status'] == 1){
-                    $status = "Approved";
+                    $status = "Di Kirim";
                   }elseif($hasil['status'] == 2){
-                    $status = "Proccessed";
-                  }elseif($hasil['status'] == 3){
-                    $status = "Finish";
+                    $status = "Di Proses";
+                  }elseif($hasil['status'] == 2){
+                    $status = "Selesai";
                   }else{
-                    $status = "Rejected";
+                    $status = "Di Tolak";
                   }
             $html .='<tr>
             	  <td>'.$hasil['no_ticket'].'</td>
                 <td>'.$hasil['tgl_req'].'</td>
                 <td>'.$hasil['nama'].'</td>
                 <td>'.$hasil['description'].'</td>
-                <td>'.$hasil['attachment'].'</td>
+                <td>'.$hasil['no_hp'].'</td>
                 <td>'.$hasil['email'].'</td>
                 <td>'.$status.'</td>
 	             </tr>';

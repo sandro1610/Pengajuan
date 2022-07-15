@@ -67,6 +67,7 @@
                   </div>
                 </div>
                 <div class="text-center">
+                  <a class="btn btn-secondary mt-4" href="registrasi.php">Registrasi Akun</a>
                 <button  class="btn btn-primary mt-4" name="submit" type="submit">Log In</button>
                 </div>
               </form>

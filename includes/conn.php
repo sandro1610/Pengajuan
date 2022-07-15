@@ -1,7 +1,7 @@
 <?php
 
 $host = "localhost";
-$dbname = "isds";
+$dbname = "pengajuan";
 $username = "root";
 $password = "";
 

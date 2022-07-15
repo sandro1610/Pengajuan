@@ -85,15 +85,15 @@
                                       <div class="col-sm-6">
                                         <input class="form-control" readonly type="text" value="<?php 
                                                                                                 if ($hasil['status'] < 1) {
-                                                                                                 echo "Draft";
+                                                                                                 echo "Pengajuan Baru";
                                                                                                 }elseif($hasil['status'] == 1){
-                                                                                                  echo "Approved";
+                                                                                                  echo "Di Kirim";
                                                                                                 }elseif($hasil['status'] == 2){
-                                                                                                  echo "Proccessed";
+                                                                                                  echo "Di Proses";
                                                                                                 }elseif($hasil['status'] == 3){
-                                                                                                  echo "Finish";
+                                                                                                  echo "Selesai";
                                                                                                 }else{
-                                                                                                  echo "Rejected";
+                                                                                                  echo "Ditolak";
                                                                                                 }
                                                                                                ?>">
                                       </div>
@@ -105,6 +105,9 @@
                                       </div>
                                   </div>    
                                   <div class="text-center">
+                                    <?php if ($hasil['status'] <= 2) {?>
+                                      <a class="btn btn-warning" href="javascript:reject_request('<?=$hasil['v_key'];?>')">Tolak Pengajuan</a>
+                                    <?php } ?>
                                     <?php if ($hasil['status'] < 1) {?>
                                       <a class="btn btn-success" href="javascript:send_request('<?=$hasil['v_key'];?>')">Kirim Pengajuan</a>
                                     <?php } ?>
@@ -121,16 +124,16 @@
               </td>
               <td><?php 
                 if ($hasil['status'] < 1) {
-                 echo "Draft";
-                }elseif($hasil['status'] == 1){
-                  echo "Send";
-                }elseif($hasil['status'] == 2){
-                  echo "Proccessed";
-                }elseif($hasil['status'] == 3){
-                  echo "Finish";
-                }else{
-                  echo "Rejected";
-                }
+                  echo "Pengajuan Baru";
+                 }elseif($hasil['status'] == 1){
+                   echo "Di Kirim";
+                 }elseif($hasil['status'] == 2){
+                   echo "Di Proses";
+                 }elseif($hasil['status'] == 3){
+                   echo "Selesai";
+                 }else{
+                   echo "Ditolak";
+                 }
                ?></td>
               <td><?=$hasil['no_ticket'];?></td>
               <td><?=$hasil['tgl_req'];?></td>

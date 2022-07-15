@@ -7,9 +7,6 @@ if (isset($_GET['p'])) {
 		case 'dashboard':
 			include $dir . 'dashboard.php';
 			break;
-		case 'request':
-			include $dir . 'request.php';
-			break;
 		case 'history_request':
 			include $dir . 'history_request.php';
 			break;

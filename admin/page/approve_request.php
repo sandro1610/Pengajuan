@@ -13,17 +13,11 @@
 	}elseif ($approve == 1) {
 		$query = mysqli_query($link,"UPDATE tb_request SET status = '2' WHERE v_key = '$v_key'");
 		if ($query) {
-			echo "<script>alert('Request Approved');</script>";
+			echo "<script>alert('Request Proccessing');</script>";
 			echo "<script>window.location='?p=history_request';</script>";
 		}
 	}elseif ($approve == 2) {
 		$query = mysqli_query($link,"UPDATE tb_request SET status = '3' WHERE v_key = '$v_key'");
-		if ($query) {
-			echo "<script>alert('Request Proccessing');</script>";
-			echo "<script>window.location='?p=history_request';</script>";
-		}
-	}elseif ($approve == 3) {
-		$query = mysqli_query($link,"UPDATE tb_request SET status = '4' WHERE v_key = '$v_key'");
 		if ($query) {
 			echo "<script>alert('Request Finished');</script>";
 			echo "<script>window.location='?p=history_request';</script>";

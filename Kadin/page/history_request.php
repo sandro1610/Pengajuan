@@ -31,12 +31,6 @@
             <tr>
               <td>
                 <a href="#" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal<?php echo $hasil['no_ticket']; ?>">Detail</a>
-                <a href="#" type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#modal-form<?php echo $hasil['no_ticket']; ?>">
-                  <i class='fas fa-pencil-alt' style="color: gray;"></i>
-                  </a>
-                  <a class="btn btn-sm btn-default" href="javascript:hapusData_request('<?=$hasil['no_ticket'];?>')">
-                       <i class='fas fa-trash' style="color: red;"></i>
-                  </a>
                 <!-- Modal -->
                 <div class="modal fade" id="myModal<?php echo $hasil['no_ticket']; ?>" role="dialog">
                    <div class="modal-dialog modal- modal-dialog-centered modal-lg" role="document">
@@ -107,10 +101,9 @@
                                   </div>    
                                   <div class="text-center">
                                     <?php if ($hasil['status'] == 1) {?>
-                                      <a class="btn btn-success" href="javascript:approve_request('<?=$hasil['v_key'];?>')">Approve</a>
+                                      <a class="btn btn-success" href="javascript:proccess_request('<?=$hasil['v_key'];?>')">Proses</a>
+                                      <a class="btn btn-danger" href="javascript:reject_request('<?=$hasil['v_key'];?>')">Tolak</a>
                                     <?php } ?>
-                                    <a class="btn btn-danger" href="javascript:hapusData_request('<?=$hasil['no_ticket'];?>')">Delete</a>
-                                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-form<?php echo $hasil['no_ticket']; ?>">Edit</button>
                                   </div>
                               </form>
                             </div>
