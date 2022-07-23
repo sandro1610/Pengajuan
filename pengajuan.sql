@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 15, 2022 at 08:56 AM
+-- Generation Time: Jul 23, 2022 at 09:35 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -48,7 +48,8 @@ INSERT INTO `tb_request` (`no_ticket`, `tgl_req`, `id_user`, `description`, `att
 (16, '2022-07-15', 45, 'Tes', 'Abdramsyah 15-Jul-2022 07-41-19.pdf', 'abd@gmail.com', '964bb8be1ab056f6985a60f0d9ebad02', 3),
 (17, '2022-07-15', 45, 'Pengajuan tes tes', 'Abdramsyah 15-Jul-2022 08-20-38.pdf', 'abd@gmail.com', '92e44a6e088fc0006cfd7c27dfd2406d', 3),
 (18, '2022-07-15', 45, 'lnalsdnjkansdnasd', 'Abdramsyah 15-Jul-2022 08-37-44.pdf', 'abd@gmail.com', '7f4a73c03c09f7807edbd9a594a43aca', 3),
-(19, '2022-07-15', 48, 'Pengajuan Sodikin', 'Sodikin 15-Jul-2022 08-51-51.pdf', 'sodikin@gmail.com', 'ce2828a1272fb835c52df940ff3ffe88', 3);
+(19, '2022-07-15', 48, 'Pengajuan Sodikin', 'Sodikin 15-Jul-2022 08-51-51.pdf', 'sodikin@gmail.com', 'ce2828a1272fb835c52df940ff3ffe88', 3),
+(20, '2022-07-23', 49, 'sdadasdadsa', 'Agung 23-Jul-2022 09-32-15.pdf', 'agung@gmail.com', 'd99b2e99fc18135772215bac5ca4605e', 3);
 
 -- --------------------------------------------------------
 
@@ -71,10 +72,11 @@ CREATE TABLE `tb_user` (
 
 INSERT INTO `tb_user` (`id_user`, `password`, `nama`, `no_hp`, `email`, `level`) VALUES
 (44, '$2y$10$wLLZi5WcGcvap1zcqpnaQuBieZbqzohFNaxQ6w27dJvQBGTbpDnxi', 'Mikhael Sandro', '082384602288', 'sandro@gmail.com', 'Admin'),
-(45, '$2y$10$z.hC1BdNN/JgXTyDNdR6Q.Ttl.hSBNp3Y14ixng./HYc5y3u/TUo6', 'Abdramsyah', '0812332112', 'abd@gmail.com', 'Pengaju'),
+(45, '$2y$10$z.hC1BdNN/JgXTyDNdR6Q.Ttl.hSBNp3Y14ixng./HYc5y3u/TUo6', 'Abdramsyah', '0812332112', 'abd@gmail.com', 'Pemohon'),
 (46, '$2y$10$YOC4e.uyZW8Fn/ECHskFiOqva3uT/D1u2o8nVMf8NjZr8QJeaa1Am', 'Habib', '081231231', 'habib@gmail.com', 'Kadin'),
-(47, '$2y$10$qM7OQ/JNmNU.tATms8sTZOmedDWS/FNH/TKoj6LKU2ivapgE6wSCG', 'Jayah', '08231333311', 'jayah@gmail.com', 'Kabag'),
-(48, '$2y$10$SSnNYR2X6jeWBU2a3jP6heJnIBSXB7b/qYGZCdf09.WANBlR72akO', 'Sodikin', '081233322111', 'sodikin@gmail.com', 'Pengaju');
+(47, '$2y$10$qM7OQ/JNmNU.tATms8sTZOmedDWS/FNH/TKoj6LKU2ivapgE6wSCG', 'Jayah', '08231333311', 'jayah@gmail.com', 'Kabid'),
+(48, '$2y$10$SSnNYR2X6jeWBU2a3jP6heJnIBSXB7b/qYGZCdf09.WANBlR72akO', 'Sodikin', '081233322111', 'sodikin@gmail.com', 'Pemohon'),
+(49, '$2y$10$PRU4bE9ukXdrGFg290BBkeS/4ggWpDFu/yLEwtEylT7KlLnaVoVCa', 'Agung', '0812223331', 'agung@gmail.com', 'Pemohon');
 
 --
 -- Indexes for dumped tables
@@ -101,13 +103,13 @@ ALTER TABLE `tb_user`
 -- AUTO_INCREMENT for table `tb_request`
 --
 ALTER TABLE `tb_request`
-  MODIFY `no_ticket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `no_ticket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

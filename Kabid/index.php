@@ -3,7 +3,7 @@ include '../includes/conn.php';
 session_start();
 if (empty($_SESSION['email']) && empty($_SESSION['password']) && empty($_SESSION['id_user'])) {
   header("Location:../index.php");
-} elseif ($_SESSION['level'] != 'Kabag') {
+} elseif ($_SESSION['level'] != 'Kabid') {
   header("Location:../index.php");
 }
 ?>

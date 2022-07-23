@@ -17,10 +17,10 @@ if (isset($_POST["submit"]) ){
                 	echo "<script>window.location='../Admin/index.php';</script>";
                 }elseif ($result['level'] == 'Kadin') {
                 	echo "<script>window.location='../Kadin/index.php';</script>";
-                }elseif ($result['level'] == 'Pengaju') {
-                	echo "<script>window.location='../Pengaju/index.php';</script>";
-                }elseif ($result['level'] == 'Kabag') {
-                	echo "<script>window.location='../Kabag/index.php';</script>";         
+                }elseif ($result['level'] == 'Pemohon') {
+                	echo "<script>window.location='../Pemohon/index.php';</script>";
+                }elseif ($result['level'] == 'Kabid') {
+                	echo "<script>window.location='../Kabid/index.php';</script>";         
                 }else{
 	                echo "<script>alert('Login Failed');</scrixpt>";
 	                echo "<script>window.location='../index.php';</script>";	

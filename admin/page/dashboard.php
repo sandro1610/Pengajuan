@@ -73,8 +73,8 @@ if (isset($_POST["Submit_User"])) {
                                   <option selected disabled>Level</option>
                                   <option value="Admin">Admin</option>
                                   <option value="Kadin">Kepala Dinas</option>
-                                  <option value="Kabag">Kepala Bagian</option>
-                                  <option value="Pengaju">Pengaju</option>
+                                  <option value="Kabid">Kepala Bidang</option>
+                                  <option value="Pemohon">Pemohon</option>
                                 </select>
                               </div>
                             </div>

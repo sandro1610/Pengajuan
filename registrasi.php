@@ -4,7 +4,7 @@ if (isset($_POST["Submit_User"])) {
   $nama = $_POST["nama"];
   $email = $_POST["email"];
   $no_hp = $_POST["no_hp"];
-  $level = 'Pengaju';
+  $level = 'Pemohon';
   $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
   $sql = mysqli_query($link, "INSERT INTO tb_user(nama, email, no_hp, level, password) VALUES ('$nama', '$email', '$no_hp', '$level', '$password')");
   if ($sql) {

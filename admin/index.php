@@ -91,11 +91,6 @@ if (empty($_SESSION['email']) && empty($_SESSION['password']) && empty($_SESSION
               <i class="ni ni-single-02 text-yellow"></i> User profile
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="?p=request">
-              <i class="ni ni-mobile-button text-success "></i>Tambah Pengajuan
-            </a>
-          </li>
         </ul>
         <ul class="navbar-nav mb-md-3">
           <li class="nav-item">

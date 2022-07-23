@@ -19,7 +19,7 @@
           </thead>
           <tbody>
           <?php
-          if ($_SESSION['level'] == 'Kabag') {
+          if ($_SESSION['level'] == 'Kabid') {
             $sql = "SELECT * FROM tb_request 
                     INNER JOIN tb_user ON tb_request.id_user = tb_user.id_user
                     WHERE status = 2";
