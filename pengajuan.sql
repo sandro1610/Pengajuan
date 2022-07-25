@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 23, 2022 at 09:35 AM
+-- Generation Time: Jul 25, 2022 at 05:00 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -34,6 +34,7 @@ CREATE TABLE `tb_request` (
   `description` text NOT NULL,
   `attachment` text NOT NULL,
   `email` varchar(50) NOT NULL,
+  `balasan` text NOT NULL,
   `v_key` text NOT NULL,
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -42,14 +43,15 @@ CREATE TABLE `tb_request` (
 -- Dumping data for table `tb_request`
 --
 
-INSERT INTO `tb_request` (`no_ticket`, `tgl_req`, `id_user`, `description`, `attachment`, `email`, `v_key`, `status`) VALUES
-(14, '2022-07-14', 45, 'Pengajuan proposal permohonan sponsorship untuk acara IT Festival', 'Abdramsyah 14-Jul-2022 07-47-38.pdf', 'abd@gmail.com', '726277f3edd519e956c818dfbd79ec08', 3),
-(15, '2022-07-14', 45, 'Pengajuan', 'Abdramsyah 14-Jul-2022 18-59-17.pdf', 'abd@gmail.com', '8780e492061d0542fecbef901e122ce4', 9),
-(16, '2022-07-15', 45, 'Tes', 'Abdramsyah 15-Jul-2022 07-41-19.pdf', 'abd@gmail.com', '964bb8be1ab056f6985a60f0d9ebad02', 3),
-(17, '2022-07-15', 45, 'Pengajuan tes tes', 'Abdramsyah 15-Jul-2022 08-20-38.pdf', 'abd@gmail.com', '92e44a6e088fc0006cfd7c27dfd2406d', 3),
-(18, '2022-07-15', 45, 'lnalsdnjkansdnasd', 'Abdramsyah 15-Jul-2022 08-37-44.pdf', 'abd@gmail.com', '7f4a73c03c09f7807edbd9a594a43aca', 3),
-(19, '2022-07-15', 48, 'Pengajuan Sodikin', 'Sodikin 15-Jul-2022 08-51-51.pdf', 'sodikin@gmail.com', 'ce2828a1272fb835c52df940ff3ffe88', 3),
-(20, '2022-07-23', 49, 'sdadasdadsa', 'Agung 23-Jul-2022 09-32-15.pdf', 'agung@gmail.com', 'd99b2e99fc18135772215bac5ca4605e', 3);
+INSERT INTO `tb_request` (`no_ticket`, `tgl_req`, `id_user`, `description`, `attachment`, `email`, `balasan`, `v_key`, `status`) VALUES
+(14, '2022-07-14', 45, 'Pengajuan proposal permohonan sponsorship untuk acara IT Festival', 'Abdramsyah 14-Jul-2022 07-47-38.pdf', 'abd@gmail.com', '', '726277f3edd519e956c818dfbd79ec08', 3),
+(15, '2022-07-14', 45, 'Pengajuan', 'Abdramsyah 14-Jul-2022 18-59-17.pdf', 'abd@gmail.com', '', '8780e492061d0542fecbef901e122ce4', 9),
+(16, '2022-07-15', 45, 'Tes', 'Abdramsyah 15-Jul-2022 07-41-19.pdf', 'abd@gmail.com', '', '964bb8be1ab056f6985a60f0d9ebad02', 3),
+(17, '2022-07-15', 45, 'Pengajuan tes tes', 'Abdramsyah 15-Jul-2022 08-20-38.pdf', 'abd@gmail.com', '', '92e44a6e088fc0006cfd7c27dfd2406d', 3),
+(18, '2022-07-15', 45, 'lnalsdnjkansdnasd', 'Abdramsyah 15-Jul-2022 08-37-44.pdf', 'abd@gmail.com', '', '7f4a73c03c09f7807edbd9a594a43aca', 3),
+(19, '2022-07-15', 48, 'Pengajuan Sodikin', 'Sodikin 15-Jul-2022 08-51-51.pdf', 'sodikin@gmail.com', '', 'ce2828a1272fb835c52df940ff3ffe88', 3),
+(20, '2022-07-23', 49, 'sdadasdadsa', 'Agung 23-Jul-2022 09-32-15.pdf', 'agung@gmail.com', '', 'd99b2e99fc18135772215bac5ca4605e', 3),
+(21, '2022-07-25', 45, 'asdasdasdas', 'Abdramsyah 25-Jul-2022 04-57-40.pdf', 'abd@gmail.com', '', 'd447e798fa43eaa452d745200f96367c', 3);
 
 -- --------------------------------------------------------
 
@@ -103,7 +105,7 @@ ALTER TABLE `tb_user`
 -- AUTO_INCREMENT for table `tb_request`
 --
 ALTER TABLE `tb_request`
-  MODIFY `no_ticket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `no_ticket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `tb_user`
