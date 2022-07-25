@@ -113,7 +113,7 @@
                                   <div class="form-group row">
                                       <label for="file" class="col-sm-3 text-left control-label col-form-label">Balasan</label>
                                       <div class="col-md-6">
-                                          <a download="<?=$hasil['balasan'];?>" href="../upload/request/<?=$hasil['balasan'];?>"><?=$hasil['balasan'];?></a>
+                                          <a download="<?=$hasil['balasan'];?>" href="../upload/balasan/<?=$hasil['balasan'];?>"><?=$hasil['balasan'];?></a>
                                       </div>
                                   </div>   
                                   <div class="text-center">

@@ -173,11 +173,9 @@
                   }
                ?></td>
                <td><?php if (empty($hasil['balasan'])) {?>
-                <a href="#" type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-form<?php echo $hasil['no_ticket']; ?>">
-                Balasan
-                  </a>
+                <a href="#" type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-balas<?php echo $hasil['no_ticket']; ?>">Upload Balasan</a>
                     <?php } else{?>
-                      <a download="<?=$hasil['balasan'];?>" href="../upload/request/<?=$hasil['balasan'];?>"><?=$hasil['balasan'];?></a>
+                      <a download="<?=$hasil['balasan'];?>" href="../upload/balasan/<?=$hasil['balasan'];?>"><?=$hasil['balasan'];?></a>
                     <?php } ?>
               </td>
               <td><?=$hasil['no_ticket'];?></td>
@@ -238,6 +236,86 @@ if(isset($_POST["Edit"])){
               </div>
                 <div class="text-center">
                     <button type="Submit" class="btn btn-primary my-4" name="Edit" data-toggle="modal" data-target="#modal-form1">Edit</button>
+                </div>
+            </form>
+          </div>
+        </div>    
+      </div>            
+    </div>
+  </div>
+</div>
+<?php endwhile; ?>
+
+<!-- Modal Balasan-->
+<?php
+$result = mysqli_fetch_array($query);
+if(isset($_POST["Balas"])){  
+  $no_ticket = $_POST['no_ticket'];
+  $file = $_FILES['balasan'];
+  $fileName = $_FILES['balasan']['name'];
+  $fileTmp_name = $_FILES['balasan']['tmp_name'];
+  $fileSize = $_FILES['balasan']['size'];
+  $fileError = $_FILES['balasan']['error'];
+  $fileType = $_FILES['balasan']['type'];
+
+  $fileExt = explode('.', $fileName);
+  $fileActualExt = strtolower(end($fileExt));
+
+  $allowed = array('pdf','doc','docx');
+
+  if (in_array($fileActualExt, $allowed)) {
+    if ($fileError === 0) {
+      if ($fileSize < 1500000) {
+          $date = date('d-M-Y H-i-s');
+          $fileNewName ='Balasan '.$date.'.'.$fileActualExt;
+          $fileDestination = '../upload/balasan/'.$fileNewName;
+          move_uploaded_file($fileTmp_name, $fileDestination);
+          $sql = mysqli_query($link,"UPDATE tb_request SET balasan = '$fileNewName' WHERE no_ticket = '$no_ticket'");
+          if ($sql) {
+              echo "<script>alert('Data Saved Successfully');</script>";
+              echo "<script>window.location='?p=history_request';</script>";
+            } else {
+              echo "<script>alert('Data Failed to Save');</script>";
+          }
+        }else{
+          echo "<script>alert('Your file is too big !!');</script>";
+        }
+      }else{
+        echo "<script>alert('Thare is an error in your file !!');</script>";
+      }
+    }else{
+      echo "<script>alert('Sorry only pdf files are allowed');</script>";
+    }
+}
+?>
+<?php
+    $sql = "SELECT * FROM tb_request 
+            INNER JOIN tb_user ON tb_request.id_user = tb_user.id_user";
+    $query = mysqli_query($link,$sql);
+    while($hasil=mysqli_fetch_array($query)):
+?>
+<div class="modal fade" id="modal-balas<?php echo $hasil['no_ticket']; ?>" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+  <div class="modal-dialog modal- modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+          <h4 class="modal-title" id="modal-title-default">Edit Request</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+      </div>
+      <div class="modal-body p-0">
+        <div class="card bg-secondary shadow border-0">
+          <div class="card-body px-lg-5 py-lg-5">
+            <form role="form" method="POST" enctype="multipart/form-data">
+              <input hidden name="no_ticket" value="<?php echo $hasil['no_ticket']; ?>">
+              <div class="form-group row">
+                  <label for="file" class="col-sm-3 text-left control-label col-form-label">File</label>
+                  <div class="col-md-6">
+                      <input type="file" name="balasan" class="form-control">
+                  </div>
+              </div> 
+                <div class="text-center">
+                    <button type="Submit" class="btn btn-primary my-4" name="Balas" data-toggle="modal" data-target="#modal-form1">Edit</button>
                 </div>
             </form>
           </div>
