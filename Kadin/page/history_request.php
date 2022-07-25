@@ -78,19 +78,25 @@
                                   <div class="form-group row">
                                       <label for="lname" class="col-sm-3 text-left control-label col-form-label">Status</label>
                                       <div class="col-sm-6">
-                                        <input class="form-control" readonly type="text" value="<?php 
+                                      <textarea rows="5" class="form-control" readonly type="text" value=""><?php 
                                                                                                 if ($hasil['status'] < 1) {
-                                                                                                 echo "Draft";
-                                                                                                }elseif($hasil['status'] == 1){
-                                                                                                  echo "Send";
-                                                                                                }elseif($hasil['status'] == 2){
-                                                                                                  echo "Proccessed";
-                                                                                                }elseif($hasil['status'] == 3){
-                                                                                                  echo "Finish";
-                                                                                                }else{
-                                                                                                  echo "Rejected";
-                                                                                                }
-                                                                                               ?>">
+                                                                                                  echo "Menunggu Persetujuan Admin/TU";
+                                                                                                  }elseif($hasil['status'] == 1){
+                                                                                                    echo "Menunggu Persetujuan Kadin";
+                                                                                                  }elseif($hasil['status'] == 2){
+                                                                                                    echo "Menunggu Persetujuan Kabid";
+                                                                                                  }elseif($hasil['status'] == 3){
+                                                                                                    echo "Permohonan Disetujui";
+                                                                                                  }elseif($hasil['status'] == 4){
+                                                                                                    echo "Ditolak Admin/TU";
+                                                                                                  }elseif($hasil['status'] == 5){
+                                                                                                    echo "Ditolak Kadin";
+                                                                                                  }elseif($hasil['status'] == 6){
+                                                                                                    echo "Ditolak Kabid";
+                                                                                                  }else{
+                                                                                                    echo "Ditolak";
+                                                                                                  }
+                                                                                                ?></textarea>
                                       </div>
                                   </div>
                                   <div class="form-group row">
@@ -113,18 +119,42 @@
                     </div>
                 </div>
               </td>
-              <td><?php 
+              <td class="<?php 
                 if ($hasil['status'] < 1) {
-                 echo "Draft";
-                }elseif($hasil['status'] == 1){
-                  echo "Send";
-                }elseif($hasil['status'] == 2){
-                  echo "Proccessed";
-                }elseif($hasil['status'] == 3){
-                  echo "Finish";
+                  echo "bg-warning text-white font-weight-bold";
+                 }elseif($hasil['status'] == 1){
+                   echo "bg-secondary text-black font-weight-bold";
+                 }elseif($hasil['status'] == 2){
+                   echo "bg-primary text-white font-weight-bold";
+                 }elseif($hasil['status'] == 3){
+                   echo "bg-success text-white font-weight-bold";
+                 }elseif($hasil['status'] == 4){
+                   echo "bg-danger text-white font-weight-bold";
+                 }elseif($hasil['status'] == 5){
+                  echo "bg-danger text-white font-weight-bold";
+                }elseif($hasil['status'] == 6){
+                  echo "bg-danger text-white font-weight-bold";
                 }else{
-                  echo "Rejected";
+                  echo "bg-danger text-white font-weight-bold";
                 }
+               ?>"><?php 
+                if ($hasil['status'] < 1) {
+                  echo "Menunggu Persetujuan Admin/TU";
+                  }elseif($hasil['status'] == 1){
+                    echo "Menunggu Persetujuan Kadin";
+                  }elseif($hasil['status'] == 2){
+                    echo "Menunggu Persetujuan Kabid";
+                  }elseif($hasil['status'] == 3){
+                    echo "Permohonan Disetujui";
+                  }elseif($hasil['status'] == 4){
+                    echo "Ditolak Admin/TU";
+                  }elseif($hasil['status'] == 5){
+                    echo "Ditolak Kadin";
+                  }elseif($hasil['status'] == 6){
+                    echo "Ditolak Kabid";
+                  }else{
+                    echo "Ditolak";
+                  }
                ?></td>
               <td><?=$hasil['no_ticket'];?></td>
               <td><?=$hasil['tgl_req'];?></td>

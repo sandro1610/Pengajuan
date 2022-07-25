@@ -7,19 +7,19 @@
 	if ($approve < 1) {
 		$query = mysqli_query($link,"UPDATE tb_request SET status = '1' WHERE v_key = '$v_key'");
 		if ($query) {
-			echo "<script>alert('Request Successfully Send');</script>";
+			echo "<script>alert('Pengajuan dikirim ke KADIN');</script>";
 			echo "<script>window.location='?p=history_request';</script>";
 		}
 	}elseif ($approve == 1) {
 		$query = mysqli_query($link,"UPDATE tb_request SET status = '2' WHERE v_key = '$v_key'");
 		if ($query) {
-			echo "<script>alert('Request Proccessing');</script>";
+			echo "<script>alert('Pengajuan diproses ke KABID');</script>";
 			echo "<script>window.location='?p=history_request';</script>";
 		}
 	}elseif ($approve == 2) {
 		$query = mysqli_query($link,"UPDATE tb_request SET status = '3' WHERE v_key = '$v_key'");
 		if ($query) {
-			echo "<script>alert('Request Finished');</script>";
+			echo "<script>alert('Pengajuan Disetujui');</script>";
 			echo "<script>window.location='?p=history_request';</script>";
 		}
 	}

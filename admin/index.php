@@ -152,7 +152,7 @@ if (empty($_SESSION['email']) && empty($_SESSION['password']) && empty($_SESSION
   <script type="text/javascript">
     $(document).ready(function() {
       $('#data-request').DataTable({
-          "order": [2, 'desc']
+          "order": [3, 'desc']
       });
     });
   </script>

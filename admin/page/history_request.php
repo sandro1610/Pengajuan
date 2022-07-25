@@ -9,6 +9,7 @@
               <tr>
                   <th></th>
                   <th>Status</th>
+                  <th>Balasan</th>
                   <th>No Ticket</th>
                   <th>Tanggal</th>
                   <th>Nama</th>
@@ -83,25 +84,37 @@
                                   <div class="form-group row">
                                       <label for="lname" class="col-sm-3 text-left control-label col-form-label">Status</label>
                                       <div class="col-sm-6">
-                                        <input class="form-control" readonly type="text" value="<?php 
+                                      <textarea rows="5" class="form-control" readonly type="text" value=""><?php 
                                                                                                 if ($hasil['status'] < 1) {
-                                                                                                 echo "Pengajuan Baru";
-                                                                                                }elseif($hasil['status'] == 1){
-                                                                                                  echo "Di Kirim";
-                                                                                                }elseif($hasil['status'] == 2){
-                                                                                                  echo "Di Proses";
-                                                                                                }elseif($hasil['status'] == 3){
-                                                                                                  echo "Selesai";
-                                                                                                }else{
-                                                                                                  echo "Ditolak";
-                                                                                                }
-                                                                                               ?>">
+                                                                                                  echo "Menunggu Persetujuan Admin/TU";
+                                                                                                  }elseif($hasil['status'] == 1){
+                                                                                                    echo "Menunggu Persetujuan Kadin";
+                                                                                                  }elseif($hasil['status'] == 2){
+                                                                                                    echo "Menunggu Persetujuan Kabid";
+                                                                                                  }elseif($hasil['status'] == 3){
+                                                                                                    echo "Permohonan Disetujui";
+                                                                                                  }elseif($hasil['status'] == 4){
+                                                                                                    echo "Ditolak Admin/TU";
+                                                                                                  }elseif($hasil['status'] == 5){
+                                                                                                    echo "Ditolak Kadin";
+                                                                                                  }elseif($hasil['status'] == 6){
+                                                                                                    echo "Ditolak Kabid";
+                                                                                                  }else{
+                                                                                                    echo "Ditolak";
+                                                                                                  }
+                                                                                                ?></textarea>
                                       </div>
                                   </div>
                                   <div class="form-group row">
                                       <label for="file" class="col-sm-3 text-left control-label col-form-label">File</label>
                                       <div class="col-md-6">
                                           <a download="<?=$hasil['attachment'];?>" href="../upload/request/<?=$hasil['attachment'];?>"><?=$hasil['attachment'];?></a>
+                                      </div>
+                                  </div> 
+                                  <div class="form-group row">
+                                      <label for="file" class="col-sm-3 text-left control-label col-form-label">File</label>
+                                      <div class="col-md-6">
+                                          <a download="<?=$hasil['balasan'];?>" href="../upload/request/<?=$hasil['balasan'];?>"><?=$hasil['balasan'];?></a>
                                       </div>
                                   </div>    
                                   <div class="text-center">
@@ -122,19 +135,51 @@
                     </div>
                 </div>
               </td>
-              <td><?php 
+              <td class="<?php 
                 if ($hasil['status'] < 1) {
-                  echo "Pengajuan Baru";
+                  echo "bg-warning text-white font-weight-bold";
                  }elseif($hasil['status'] == 1){
-                   echo "Di Kirim";
+                   echo "bg-secondary text-black font-weight-bold";
                  }elseif($hasil['status'] == 2){
-                   echo "Di Proses";
+                   echo "bg-primary text-white font-weight-bold";
                  }elseif($hasil['status'] == 3){
-                   echo "Selesai";
-                 }else{
-                   echo "Ditolak";
-                 }
+                   echo "bg-success text-white font-weight-bold";
+                 }elseif($hasil['status'] == 4){
+                   echo "bg-danger text-white font-weight-bold";
+                 }elseif($hasil['status'] == 5){
+                  echo "bg-danger text-white font-weight-bold";
+                }elseif($hasil['status'] == 6){
+                  echo "bg-danger text-white font-weight-bold";
+                }else{
+                  echo "bg-danger text-white font-weight-bold";
+                }
+               ?>"><?php 
+                if ($hasil['status'] < 1) {
+                  echo "Menunggu Persetujuan Admin/TU";
+                  }elseif($hasil['status'] == 1){
+                    echo "Menunggu Persetujuan Kadin";
+                  }elseif($hasil['status'] == 2){
+                    echo "Menunggu Persetujuan Kabid";
+                  }elseif($hasil['status'] == 3){
+                    echo "Permohonan Disetujui";
+                  }elseif($hasil['status'] == 4){
+                    echo "Ditolak Admin/TU";
+                  }elseif($hasil['status'] == 5){
+                    echo "Ditolak Kadin";
+                  }elseif($hasil['status'] == 6){
+                    echo "Ditolak Kabid";
+                  }else{
+                    echo "Ditolak";
+                  }
                ?></td>
+               <td><?php if (empty($hasil['balasan'])) {?>
+                <a href="#" type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-form<?php echo $hasil['no_ticket']; ?>">
+                Balasan
+                  </a>
+                    <?php } else{?>
+                      <a download="<?=$hasil['balasan'];?>" href="../upload/request/<?=$hasil['balasan'];?>"><?=$hasil['balasan'];?></a>
+                    <?php } ?>
+              </td>
               <td><?=$hasil['no_ticket'];?></td>
               <td><?=$hasil['tgl_req'];?></td>
               <td><?=$hasil['nama'];?></td>
