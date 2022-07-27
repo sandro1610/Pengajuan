@@ -164,7 +164,7 @@
                   echo "Ditolak";
                 }
               ?></td>
-              <td><a download="<?=$hasil['balasan'];?>" href="../upload/request/<?=$hasil['balasan'];?>"><?=$hasil['balasan'];?></a></td>
+              <td><a download="<?=$hasil['balasan'];?>" href="../upload/balasan/<?=$hasil['balasan'];?>"><?=$hasil['balasan'];?></a></td>
               <td><?=$hasil['no_ticket'];?></td>
               <td><?=$hasil['tgl_req'];?></td>
               <td><?=$hasil['nama'];?></td>
