@@ -66,8 +66,8 @@ $html='<!DOCTYPE html>
                 <td>'.$hasil['tgl_req'].'</td>
                 <td>'.$hasil['nama'].'</td>
                 <td>'.$hasil['description'].'</td>
-                <td>'.$hasil['no_hp'].'</td>
                 <td>'.$hasil['email'].'</td>
+                <td>'.$hasil['no_hp'].'</td>
                 <td>'.$status.'</td>
 	             </tr>';
 	               }
