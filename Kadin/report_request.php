@@ -44,17 +44,23 @@ $html='<!DOCTYPE html>
               $query = mysqli_query($link,$sql);
               while($hasil=mysqli_fetch_array($query)){
               	$status = "";
-              		if ($hasil['status'] < 1) {
-                   $status = "Pengajuan Baru";
-                  }elseif($hasil['status'] == 1){
-                    $status = "Di Kirim";
-                  }elseif($hasil['status'] == 2){
-                    $status = "Di Proses";
-                  }elseif($hasil['status'] == 2){
-                    $status = "Selesai";
-                  }else{
-                    $status = "Di Tolak";
-                  }
+                if ($hasil['status'] < 1) {
+                echo "Menunggu Persetujuan Admin/TU";
+                }elseif($hasil['status'] == 1){
+                  $status ="Menunggu Persetujuan Kadin";
+                }elseif($hasil['status'] == 2){
+                  $status = "Menunggu Persetujuan Kabid";
+                }elseif($hasil['status'] == 3){
+                  $status = "Permohonan Disetujui";
+                }elseif($hasil['status'] == 4){
+                  $status = "Ditolak Admin/TU";
+                }elseif($hasil['status'] == 5){
+                  $status = "Ditolak Kadin";
+                }elseif($hasil['status'] == 6){
+                  $status = "Ditolak Kabid";
+                }else{
+                  $status = "Ditolak";
+                }
             $html .='<tr>
             	  <td>'.$hasil['no_ticket'].'</td>
                 <td>'.$hasil['tgl_req'].'</td>
