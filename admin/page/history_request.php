@@ -260,6 +260,16 @@
     $no_ticket = $_POST['no_ticket'];
     $file = $_FILES['balasan'];
     $fileName = $_FILES['balasan']['name'];
+    $flag = false;
+    $body = "hi Pengajuan Anda disetujui, silahkan login kembali di website dan mengunduh surat body dari kami Untuk info selanjutnya, buka kembali Website Pengajuan Sponsorship Dinas Pemuda dan Olahraga Provinsi Sumatera Selatan 
+    
+    Klik link berikut : http://disporasponsorship.expertib.com";
+    $subject = "Pengajuan Sponsorship Diterima";
+    if ($fileName == "SURAT BALASAN DITOLAK.pdf") {
+      $flag = true;
+      $subject = "Pengajuan Sponsorship Ditolak";
+      $body = "Maaf, pengajuan anda kami tolak terlebih dahulu";
+    }
     $fileTmp_name = $_FILES['balasan']['tmp_name'];
     $fileSize = $_FILES['balasan']['size'];
     $fileError = $_FILES['balasan']['error'];
@@ -308,22 +318,22 @@
             //Set this to true if SMTP host requires authentication to send email
             $mail->SMTPAuth = true;
             //Provide username and password     
-            $mail->Username = "disporaasumsel@gmail.com";   //nama-email smtp          
-            $mail->Password = "kxroghnzsjzeaifz";           //password email smtp
+            $mail->Username = "disporaaasumsel@gmail.com";   //nama-email smtp          
+            $mail->Password = "fznujdnllbihcrtb";           //password email smtp
             //If SMTP requires TLS encryption then set it
             $mail->SMTPSecure = "tls";
             //Set TCP port to connect to 
             $mail->Port = 587;
 
             $mail->From = "mailAnda@gmail.com"; //email pengirim
-            $mail->FromName = "Pengajuan Proposal Sponsorship"; //nama pengirim
+            $mail->FromName = "DISPORA SUMSEL"; //nama pengirim
 
             $mail->addAddress($query['email'], $query['nama']); //email penerima
 
             $mail->isHTML(true);
 
-            $mail->Subject = "Pengajuan Proposal Sponsorship"; //subject
-            $mail->Body    = "hi Pengajuan Anda disetujui, silahkan login kembali di website dan mengunduh surat balasan dari kami"; //isi email
+            $mail->Subject = $subject; //subject
+            $mail->Body    = $body; //isi email
             $mail->AltBody = "DISPORA SUMSEL"; //body email (optional)
 
             if (!$mail->send()) {
